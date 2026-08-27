@@ -34,7 +34,7 @@ dotnet ef database update
 
 ```bash
 dotnet restore
-dotnet run --launch-profile http
+dotnet run
 ```
 
 Backend будет доступен по адресу:
