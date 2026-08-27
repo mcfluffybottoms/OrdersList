@@ -14,8 +14,14 @@ public class OrderController(OrderService service) : ControllerBase
     [ProducesResponseType(StatusCodes.Status201Created)]
     public async Task<IActionResult> CreateOrder(OrderCreateDto order)
     {
-        await service.AddOrderAsync(order);
-        return Created();
+        try
+        {
+            await service.AddOrderAsync(order);
+            return Created();
+        } catch (ArgumentException e)
+        {
+            return BadRequest(e.Message);
+        }
     }
 
     [HttpGet]

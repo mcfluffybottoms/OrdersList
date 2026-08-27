@@ -11,14 +11,14 @@ public class SQLiteOrderRepository(AppDbContext context) : IOrderRepository
     {
         var senderAddress = new Address
         {
-            Locality = orderDto.SenderAddress.Locality,
-            StreetAddress = orderDto.SenderAddress.StreetAddress
+            Locality = orderDto.SenderAddress.Locality.Trim(),
+            StreetAddress = orderDto.SenderAddress.StreetAddress.Trim()
         };
 
         var receiverAddress = new Address
         {
-            Locality = orderDto.ReceiverAddress.Locality,
-            StreetAddress = orderDto.ReceiverAddress.StreetAddress
+            Locality = orderDto.ReceiverAddress.Locality.Trim(),
+            StreetAddress = orderDto.ReceiverAddress.StreetAddress.Trim()
         };
 
         context.Addresses.AddRange(senderAddress, receiverAddress);
