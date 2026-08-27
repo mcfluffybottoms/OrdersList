@@ -1,23 +1,30 @@
-const API_URL = `https://localhost:5050/orders`;
+const API_URL = import.meta.env.VITE_API_URL;
 
-type address = {
+export type Address = {
     locality: string;
     streetAddress: string
 }
 
-type order = {
+export type Order = {
     id: number;
-    senderAddress: address;
-    receiverAddress: address;
+    senderAddress: Address;
+    receiverAddress: Address;
     weight: number;
     pickupDate: Date
 }
 
-export async function createOrder(order: order) {
+export type CreateOrderRequest = {
+    senderAddress: Address;
+    receiverAddress: Address;
+    weight: number;
+    pickupDate: Date
+}
+
+export async function createOrder(order: CreateOrderRequest) {
     const response = await fetch(`${API_URL}/create`, {
         method: "POST",
         headers: {
-        "Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
         body: JSON.stringify(order),
     });

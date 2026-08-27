@@ -13,3 +13,10 @@ public record OrderDto(
     long Weight, // in gramms
     DateTime PickupDate
 );
+
+public record OrderCreateDto(
+    AddressDto SenderAddress,
+    AddressDto ReceiverAddress,
+    long Weight, // in gramms
+    DateTime PickupDate
+);

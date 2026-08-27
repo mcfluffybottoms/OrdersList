@@ -5,7 +5,7 @@ namespace OrdersList.Services;
 
 public class OrderService(IOrderRepository repo)
 {
-    public async Task AddOrderAsync(OrderDto order) {
+    public async Task AddOrderAsync(OrderCreateDto order) {
         await repo.AddOrderAsync(order);
     }
 

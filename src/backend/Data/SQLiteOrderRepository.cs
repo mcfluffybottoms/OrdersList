@@ -7,7 +7,7 @@ namespace OrdersList.Data;
 
 public class SQLiteOrderRepository(AppDbContext context) : IOrderRepository
 {
-    public async Task AddOrderAsync(OrderDto orderDto)
+    public async Task AddOrderAsync(OrderCreateDto orderDto)
     {
         var senderAddress = new Address
         {

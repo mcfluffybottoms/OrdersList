@@ -12,7 +12,7 @@ public class OrderController(OrderService service) : ControllerBase
 {
     [HttpPost("create")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> CreateOrder(OrderDto order)
+    public async Task<IActionResult> CreateOrder(OrderCreateDto order)
     {
         await service.AddOrderAsync(order);
         return Created();

@@ -9,19 +9,38 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
+// Config database.
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite( builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 builder.Services.AddScoped<IOrderRepository, SQLiteOrderRepository>();
 
+// Config business logic.
 builder.Services.AddScoped<OrderService>();
 
+// Config Exception Handler.
 builder.Services.AddExceptionHandler<OrderExceptionHandler>();
 builder.Services.AddProblemDetails();
+
+// Allow requests from frontend
+var allowFrontend = "_allowFrontend";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: allowFrontend,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
+
+// ----- BUILD ----- //
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseCors(allowFrontend);
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
