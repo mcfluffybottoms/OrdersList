@@ -58,7 +58,7 @@ GET http://localhost:5050/orders
 ```
 
 Результат (200 Ok):
-
+```text
 [
   {
     "id": 1,
@@ -74,7 +74,7 @@ GET http://localhost:5050/orders
     "pickupDate": "2026-08-28"
   }
 ]
-
+```
 ##### Создать заказ
 
 ```text
@@ -82,7 +82,7 @@ POST http://localhost:5050/orders/create
 ```
 
 Тело запроса:
-
+```text
 {
     "id": 1,
     "senderAddress": {
@@ -96,7 +96,7 @@ POST http://localhost:5050/orders/create
     "weight": 1000,
     "pickupDate": "2026-08-28"
 }
-
+```
 
 Результат: 201	- Created
 
@@ -107,6 +107,7 @@ GET http://localhost:5050/orders/{id}
 ```
 
 Результат (200 Ok):
+```text
 {
   "id": 1,
   "senderAddress": {
@@ -120,7 +121,7 @@ GET http://localhost:5050/orders/{id}
   "weight": 1000,
   "pickupDate": "2026-08-28"
 }
-
+```
 Результат также может быть 404 - not found.
 
 ### Frontend
