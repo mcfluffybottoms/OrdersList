@@ -23,13 +23,14 @@ builder.Services.AddExceptionHandler<OrderExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 // Allow requests from frontend
+var frontendUrl = builder.Configuration["FrontendUrl"];
 var allowFrontend = "_allowFrontend";
 builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: allowFrontend,
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173")
+            policy.WithOrigins(frontendUrl ?? "")
                 .AllowAnyHeader()
                 .AllowAnyMethod();
         });
@@ -39,7 +40,6 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 app.UseCors(allowFrontend);
 if (app.Environment.IsDevelopment())
 {
