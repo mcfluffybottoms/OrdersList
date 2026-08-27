@@ -80,7 +80,25 @@ GET http://localhost:5050/orders
 ```text
 POST http://localhost:5050/orders/create
 ```
-201	- Created
+
+Тело запроса:
+
+{
+    "id": 1,
+    "senderAddress": {
+      "locality": "Amsterdam",
+      "streetAddress": "Damstraat 10"
+    },
+    "receiverAddress": {
+      "locality": "Rotterdam",
+      "streetAddress": "Coolsingel 20"
+    },
+    "weight": 1000,
+    "pickupDate": "2026-08-28"
+}
+
+
+Результат: 201	- Created
 
 ##### Получить заказ по ID
 
