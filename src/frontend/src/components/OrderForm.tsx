@@ -29,7 +29,7 @@ export default function OrderForm() {
             <h2>Sender</h2>
             <input
                 type="text"
-                placeholder="Locality"
+                placeholder="City or Town"
                 required={true}
                 value={form.senderAddress.locality}
                 onChange={(e) =>
@@ -63,7 +63,7 @@ export default function OrderForm() {
 
             <input
                 type="text"
-                placeholder="Locality"
+                placeholder="City or Town"
                 required={true}
                 value={form.receiverAddress.locality}
                 onChange={(e) =>
