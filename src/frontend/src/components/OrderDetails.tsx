@@ -16,7 +16,7 @@ export default function OrderDetails() {
             })
             .catch((error) => {
                 console.error(error);
-                setError("Failed to load order.");
+                setError(error.message);
             })
             .finally(() => {
                 setLoading(false);
